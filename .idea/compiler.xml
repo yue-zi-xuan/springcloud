@@ -16,6 +16,7 @@
         <module name="cloud-config-center-3344" />
         <module name="cloud-consumer-feign-hystrix-Order80" />
         <module name="cloud-stream-rabbitMQ-provider8801" />
+        <module name="Myself-Nacos-Config3377" />
         <module name="cloud-GateWay-GateWay9527" />
         <module name="cloud-provider-payment8002" />
         <module name="cloud-config-client3355" />

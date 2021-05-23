@@ -7,9 +7,10 @@ spring:
   cloud:
     alibaba:
       seata:
-        tx-service-group: default
+        tx-service-group: seata-order-service-group
     nacos:
       discovery:
+        service: ${spring.application.name}
         server-addr: localhost:8848
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

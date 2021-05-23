@@ -1,4 +1,3 @@
-# nacos配置
 server:
   port: 3377
 
@@ -13,6 +12,7 @@ spring:
         server-addr: localhost:8848 #Nacos作为配置中心地址
         file-extension: yml #指定yaml格式的配置
         group: TEST_GROUP
+
 
 
   # ${spring.application.name}-${spring.profile.active}.${spring.cloud.nacos.config.file-extension}

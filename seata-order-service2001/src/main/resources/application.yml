@@ -20,6 +20,7 @@ spring:
 
     nacos:
       discovery:
+        service: ${spring.application.name}
         server-addr: localhost:8848
 
 

@@ -13,24 +13,25 @@ public class RateLimitController {
 
 
     @GetMapping(value = "/byResource")
-    @SentinelResource(value = "byResource",blockHandler = "handleException")
-    public CommonResult byResource()
-    {
-        return new CommonResult(200,"按名称限流测试ok",new Payment(2020L,"serial001"));
+    @SentinelResource(value = "byResource", blockHandler = "handleException")
+    public CommonResult byResource() {
+        return new CommonResult(200, "按名称限流测试ok", new Payment(2020L, "serial001"));
     }
-    public CommonResult handleException(BlockException exception)
-    {
-        return new CommonResult(444,exception.getClass().getCanonicalName()+"\t"+"服务不可用");
+
+    public CommonResult handleException(BlockException exception) {
+        return new CommonResult(444, exception.getClass().getCanonicalName() + "\t" + "服务不可用");
     }
 
     @GetMapping(value = "/rateLimit/customerBlockerHandler")
     @SentinelResource(value = "customerBlockerHandler",
             blockHandlerClass = CustomerBlockerHandler.class,
             blockHandler = "handleException2")
-    public CommonResult customerBlockerHandler()
-    {
-        return new CommonResult(200,"按名称限流测试ok",new Payment(2020L,"serial003"));
+    public CommonResult customerBlockerHandler() {
+        return new CommonResult(200, "按名称限流测试ok", new Payment(2020L, "serial003"));
     }
-
-
 }
+
+
+
+
+

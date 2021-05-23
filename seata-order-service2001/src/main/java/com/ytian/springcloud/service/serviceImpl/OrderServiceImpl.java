@@ -5,6 +5,7 @@ import com.ytian.springcloud.domain.Order;
 import com.ytian.springcloud.service.AccountService;
 import com.ytian.springcloud.service.OrderService;
 import com.ytian.springcloud.service.StorageService;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -24,13 +25,14 @@ public class OrderServiceImpl implements OrderService {
     @Resource
     private AccountService accountService;
 
-
-
+    @Override
+    @GlobalTransactional(name = "fsp-create-order",rollbackFor = Exception.class)
     public void create(Order order) {
 
         log.info("------->下单开始");
         //本应用创建订单
         orderDao.create(order);
+        System.out.println("================"+order.toString());
 
         //远程调用库存服务扣减库存
         log.info("------->order-service中扣减库存开始");
@@ -46,8 +48,8 @@ public class OrderServiceImpl implements OrderService {
         log.info("------->order-service中修改订单状态开始");
         orderDao.update(order.getUserId(),0);
         log.info("------->order-service中修改订单状态结束");
-
-        log.info("------->下单结束");
+//
+//        log.info("------->下单结束");
     }
 
 }
